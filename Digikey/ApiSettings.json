@@ -2,7 +2,7 @@
     "ApiSettings": {
         "ProductSearchBaseUrl": "https://api.digikey.com/products/v4",
         "AccessTokenEndPoint":  "https://api.digikey.com/v1/oauth2/token",
-        "ClientId": "0MaTmd7r78QHIsoLmT3zAR4MoguAA5sd",
-        "ClientSecret": "M1A0QpRnrxYro6J1"
+        "ClientId": "",
+        "ClientSecret": ""
     }
 }
