@@ -12,3 +12,4 @@ Run NSwag with the swagger file you have from each supplier
 ```
 nswag openapi2csclient /input:filename.json /output:filename.cs
 ```
+If a supplier updates their endpoints we might have to download a new swagger file and generate a new client for our program.
