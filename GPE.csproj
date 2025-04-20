@@ -14,7 +14,7 @@
   </ItemGroup>
 
     <ItemGroup>
-        <None Update="DigiKey\ApiSettings.json">
+        <None Update="ApiSettings.json">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>

@@ -1,8 +1,0 @@
-{
-    "ApiSettings": {
-        "ProductSearchBaseUrl": "https://api.digikey.com/products/v4",
-        "AccessTokenEndPoint":  "https://api.digikey.com/v1/oauth2/token",
-        "ClientId": "",
-        "ClientSecret": ""
-    }
-}
