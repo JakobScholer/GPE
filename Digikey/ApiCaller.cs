@@ -1,14 +1,12 @@
 ﻿using Digikey;
-using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
 namespace GPE.Digikey
 {
-    class ApiCaller
+    class ApiCaller : GPE.ApiCaller
     {
         private string? _oauthToken;
         private DateTime _tokenExpiration;
-        private readonly IConfiguration _configuration;
         private readonly Client _client;
         private readonly string _clientId;
         private readonly string _clientSecret;
@@ -18,26 +16,15 @@ namespace GPE.Digikey
         public ApiCaller() {
             _oauthToken = null;
             _tokenExpiration = DateTime.MinValue;
-            _configuration = new ConfigurationBuilder()
-                .AddJsonFile("ApiSettings.json")
-                .Build();
-            _client = new Client(new HttpClient())
+            _client = new Client(_httpClient)
             {
                 BaseUrl = _baseUrl
             };
-            _clientId = _configuration["Digikey:ClientId"] ?? throw new ArgumentNullException("Digikey:ClientId cannot be null");
-            if (string.IsNullOrWhiteSpace(_clientId))
-            {
-                throw new ArgumentException("Digikey:ClientId cannot be an empty string or whitespace.");
-            }
-            _clientSecret = _configuration["Digikey:ClientSecret"] ?? throw new ArgumentNullException("Digikey:ClientSecret cannot be null");
-            if (string.IsNullOrWhiteSpace(_clientSecret))
-            {
-                throw new ArgumentException("Digikey:ClientSecret cannot be an empty string or whitespace.");
-            }
+            _clientId = GetConfigurationValue("Digikey:ClientId");
+            _clientSecret = GetConfigurationValue("Digikey:ClientSecret");
         }
 
-        public async Task CallProductDetailsAsync(string productNumber)
+        public async Task GetProductDetailsAsync(string productNumber)
         {
             await EnsureValidTokenAsync();
             try

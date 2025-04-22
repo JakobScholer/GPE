@@ -14,3 +14,8 @@ Run NSwag with the swagger file you have from each supplier
 ```
 nswag openapi2csclient /input:filename.json /output:filename.cs
 ```
+## Farnell
+All information should be imbedded in the request url.
+Api key is required for all requests.
+Pricing information requires a CustomerID and Secret Key. TODO get this
+
